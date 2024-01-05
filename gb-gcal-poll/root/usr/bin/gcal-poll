@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -x
+set -u
+
+echo ${GCAL_OAUTH} > ~/.gcalcli_oauth
+
+while true; do
+
+    sleep 5s
+
+    gcalcli --client-id ${GCAL_CLIENT_ID} \
+	    --client-secret ${GCAL_CLIENT_SECRET} \
+	    --calendar ${GCAL_CALENDAR} agenda --tsv --nodeclined  $(date -I -d '-1 day') $(date -I -d '+1 month') \
+        | base64 \
+        | curl -u webhook:${GCAL_WEBHOOK_PASSWORD} -H "Content-Type: text/plain" \
+               -X POST --data-binary @- http://localhost:8080/gcal-agenda
+
+    sleep 2m
+
+done;
