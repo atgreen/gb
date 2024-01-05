@@ -33,4 +33,6 @@ RUN git clone --depth=1 https://github.com/ocicl/ocicl.git; cd ocicl; make; make
 
 RUN ocicl install
 
+RUN chmod -R go+rwx /opt/gbuser
+
 CMD sbcl --eval '(asdf:load-system :gb)'
