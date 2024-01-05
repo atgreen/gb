@@ -248,6 +248,12 @@ security-token = \"test\"
 					         :external-format :latin-1))
 	      (make-hash-table)))
 
+    (log:info "config.ini at ~A" config-ini)
+    ;; dump the contents of *config*
+    (maphash (lambda (key value)
+         (log:info "~A = ~A" key value))
+       *config*)
+
     (flet ((get-config-value (key)
 	     (let ((value (or (gethash key *config*)
 			      (gethash key *default-config*)
