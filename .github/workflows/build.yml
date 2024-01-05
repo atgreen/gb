@@ -31,3 +31,10 @@ jobs:
           context: gb
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/gb:latest
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: gb-gcal-poll
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/gb-gcal-poll:latest

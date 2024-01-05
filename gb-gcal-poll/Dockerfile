@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi7/python-36
+FROM registry.access.redhat.com/ubi9/python-311
 
 RUN  pip install gcalcli
 COPY ./root /
