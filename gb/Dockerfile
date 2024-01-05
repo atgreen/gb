@@ -36,8 +36,4 @@ RUN ocicl install
 
 RUN chmod -R go+rwx /opt/gbuser
 
-CMD sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)'
-
-# USER 0
-# RUN useradd -r -u 2000  -m -d /opt/baduser -s /bin/bash baduser
-# USER 2000
+CMD sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)' --eval '(gb:start-server)'
