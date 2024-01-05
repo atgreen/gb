@@ -37,8 +37,7 @@ RUN ocicl install
 
 RUN curl -L -O "https://github.com/atgreen/green-orb/releases/download/v${GREEN_ORB_VERSION}/green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz" \
     && tar xf green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz \
-    && rm green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz \
-    && echo "# Replace this file to enable the orb" > green-orb.yaml
+    && rm green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz
 
 RUN chmod -R go+rwx /opt/gbuser
 
