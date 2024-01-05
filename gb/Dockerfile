@@ -1,4 +1,4 @@
-FROM ubi9
+FROM ubi9/ubi
 
 MAINTAINER Anthony Green <green@moxielogic.com>
 
