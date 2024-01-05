@@ -6,7 +6,8 @@ ENV LC_ALL=C.utf8 \
     LANG=C.utf8 \
     LANGUAGE=C.utf8 \
     SBCL_VERSION=2.3.10 \
-    PATH=/opt/gbuser/.local/bin:$PATH
+    PATH=/opt/gbuser/.local/bin:$PATH \
+    HOME=/opt/gbuser
 
 RUN dnf -y install bzip2 git make gcc
 
@@ -36,3 +37,7 @@ RUN ocicl install
 RUN chmod -R go+rwx /opt/gbuser
 
 CMD sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)'
+
+# USER 0
+# RUN useradd -r -u 2000  -m -d /opt/baduser -s /bin/bash baduser
+# USER 2000
