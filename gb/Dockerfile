@@ -35,4 +35,4 @@ RUN ocicl install
 
 RUN chmod -R go+rwx /opt/gbuser
 
-CMD sbcl --eval '(asdf:load-system :gb)'
+CMD sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)'
