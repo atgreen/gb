@@ -22,7 +22,7 @@ RUN curl -L -O "https://downloads.sourceforge.net/project/sbcl/sbcl/${SBCL_VERSI
 RUN useradd -r -u 1000  -m -d /opt/gbuser -s /bin/bash gbuser
 
 WORKDIR /opt/gbuser
-COPY * .
+COPY . .
 RUN chown -R gbuser /opt/gbuser
 
 USER 1000
