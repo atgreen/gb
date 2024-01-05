@@ -6,6 +6,7 @@ ENV LC_ALL=C.utf8 \
     LANG=C.utf8 \
     LANGUAGE=C.utf8 \
     SBCL_VERSION=2.3.10 \
+    GREEN_ORB_VERSION=0.2.4 \
     PATH=/opt/gbuser/.local/bin:$PATH \
     HOME=/opt/gbuser
 
@@ -34,6 +35,11 @@ RUN git clone --depth=1 https://github.com/ocicl/ocicl.git; cd ocicl; make; make
 
 RUN ocicl install
 
+RUN curl -L -O "https://github.com/atgreen/green-orb/releases/download/v${GREEN_ORB_VERSION}/green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz" \
+    && tar xf green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz \
+    && rm green-orb-${GREEN_ORB_VERSION}-linux-amd64.tar.gz \
+    && echo "# Replace this file to enable the orb" > green-orb.yaml
+
 RUN chmod -R go+rwx /opt/gbuser
 
-CMD sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)' --eval '(gb:start-server)'
+CMD ./orb sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)' --eval '(gb:start-server)'
