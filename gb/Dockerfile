@@ -1,4 +1,4 @@
-FROM ubi9/ubi
+FROM registry.access.redhat.com/ubi9/ubi
 
 MAINTAINER Anthony Green <green@moxielogic.com>
 
