@@ -1,11 +1,11 @@
 ---
-channel:
+channels:
 
   - name: "ready"
     type: "exec"
     shell: "touch gb-is-ready"
 
-signal:
+signals:
 
   - regex: "Starting server"
     channel: "ready"
