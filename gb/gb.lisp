@@ -426,14 +426,15 @@ security-token = \"test\"
 (easy-routes:defroute org-agenda ("/org-agenda" :method :post) ()
   (with-http-authentication
       (setf (hunchentoot:content-type*) "text/plain")
-    (print (hunchentoot:post-parameters*))
+    (log:info (hunchentoot:post-parameters*))
     (let ((data (hunchentoot:raw-post-data :request hunchentoot:*request*)))
       (log:info "/org-agenda")
+      (log:info data)
       (when data
         (let ((atext (concatenate 'string "<pre>" (cl-base64:base64-string-to-string (sb-ext:octets-to-string data)) "</pre>")))
           (format t "About to push-org-agenda: ~A~%" atext)
           (let ((hunchentoot:*acceptor* *hunchentoot-server*))
-	    (push-org-agenda atext))
+            (push-org-agenda atext))
           (setf (slot-value *org-agenda-panel* 'agenda-text) atext))))))
 
 (easy-routes:defroute alert ("/alert" :method :post) ()
