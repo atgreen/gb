@@ -437,6 +437,12 @@ security-token = \"test\"
             (push-org-agenda atext))
           (setf (slot-value *org-agenda-panel* 'agenda-text) atext))))))
 
+(easy-routes:defroute next-call ("/next-call" :method :get) ()
+  (with-http-authentication
+      (setf (hunchentoot:content-type*) "text/plain")
+    (log:info "/next-call")
+    *timestring*))
+
 (easy-routes:defroute alert ("/alert" :method :post) ()
   (log:info "/alert")
   (setf (hunchentoot:content-type*) "text/plain")
