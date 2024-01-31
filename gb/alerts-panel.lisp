@@ -24,7 +24,7 @@
    (query :reader query)))
 
 (defun connect-to-db (alerts-panel)
-  (unless (slot-value alerts-panel 'db-connect)
+  (unless (slot-value alerts-panel 'db-connection)
     (log:info (getenv "TIMESCALEDB_HOST"))
     (log:info (getenv "TIMESCALEDB_PASSWORD"))
     (handler-case
