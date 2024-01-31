@@ -19,7 +19,7 @@
 (in-package :gb)
 
 (defclass alerts-panel (panel)
-  ((db-connection :reader db-connection)
+  ((db-connection :reader db-connection :initform nil)
    (content :initform "")
    (query :reader query)))
 
