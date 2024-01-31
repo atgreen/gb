@@ -41,4 +41,6 @@ RUN curl -L -O "https://github.com/atgreen/green-orb/releases/download/v${GREEN_
 
 RUN chmod -R go+rwx /opt/gbuser
 
+RUN sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)' --eval '(sb-ext:quit)'
+
 CMD ./orb sbcl --userinit /opt/gbuser/.sbclrc --eval '(asdf:load-system :gb)' --eval '(gb:start-server)'
