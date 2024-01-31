@@ -23,7 +23,7 @@
    (content :initform "")
    (query :reader query)))
 
-(defun connect-to-db ((alerts-panel alerts-panel))
+(defun connect-to-db (alerts-panel)
   (unless (slot-value alerts-panel 'db-connect)
     (log:info (getenv "TIMESCALEDB_HOST"))
     (log:info (getenv "TIMESCALEDB_PASSWORD"))
